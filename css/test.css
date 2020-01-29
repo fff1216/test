@@ -3,6 +3,9 @@
     padding: 0;
     /* font-family:宋体; */
 }
+input[type=text] {
+    margin: 0;
+}
 #root{
     /* padding-top: 60px; */
     width: 100%;
@@ -13,7 +16,7 @@
     padding: 18px 16px;
     border: 0;
     background-color: #0e91c5;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     color: white;
     font-size: 20px;
     line-height: 20px;
@@ -21,33 +24,27 @@
 }
 #inputBar{
     margin: 0 auto;
-    width: 80%;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     text-align: center;
 } 
 #block{
-    padding:12px 16px;
-    width: calc(84% - 32px);
+    /* padding:12px 16px; */
+    padding-left: 16px;
     font-size: 16px;
     line-height: 16px;
     border: 0;
     border-radius: 5px;
     background-color: whitesmoke;
 }
-#add{
-    padding: 10px 16px; 
-    width: 15%;
-    font-size: 16px;
-    line-height: 16px;
-    border: 0;
-    border-radius: 5px;
+.btn{
     background-color: #2299c9;
-    color: whitesmoke;
-    cursor: pointer;
+}
+.add-btn{
+    width:110px;
+    margin-left: 18px;
 }
 #list,#done-list{
     margin: 0 auto;
-    width: 73%;
     /* margin-bottom: 40px; */
     /* text-align: center; */
 }
@@ -87,15 +84,15 @@
 }
 .action-delete{
     padding: 3px 15px;
+    height: 22px;
     background-color: #2299c9;
     font-size: 13px;
-    line-height: 13px;
+    line-height: 16px;
     border: 0;
     color: whitesmoke;
 } 
 #ending{
     margin: 0 auto;
-    width: 73%;
 }
 #ending>span{
     background-color: #2299c9;
@@ -104,6 +101,7 @@
     padding: 3px 16px;
     border: 0;
     border-radius: 4px;
+    cursor: pointer;
 }
 #done-list ul{
     list-style: none;
@@ -118,4 +116,7 @@
 }
 #done-list .item-time{
     color: #a1909a;
+}
+#done-list .action-delete{
+    background-color: #6f9aaa;
 }
