@@ -19,15 +19,15 @@ $(function () {
         completetask(this);
     });
 
-    var comClone=$("#complete").clone();
+    
     $(".showlist").on("click",function(){
         if($(this).attr("value")==="1"){
-            $("#complete").detach();
+            $("#complete").css("display", "none");
             $(this).attr("value","0");
             $(this).text("显示已完成任务");
         }
         else{
-            $("#done-list").append(comClone);
+            $("#complete").css("display", "block");
             $(this).text("隐藏已完成任务");
             $(this).attr("value","1");
         }
