@@ -39,7 +39,7 @@ var addtask = function (value) {
     var temp=$("#list ul li").length;
     var dolist = $("#list ul");
     var newtask = $("<li class='listli'>" +
-        "<div class='list-item z-depth-3'>" +
+        "<div class='list-item z-depth-3 row'>" +
             "<div class='item-state col m1'>" +
                 "<input type='checkbox' id='" + temp + "' class='choose'/>" +
                 "<label for='" + temp + "'></label>" +

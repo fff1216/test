@@ -57,29 +57,29 @@ input[type=text] {
     margin: 15px 0;
     padding:12px 16px;
     font-size: 16px;
-    line-height: 16px;
+    line-height: 21px;
     border: 0;
     border-radius: 5px;
+}
+.list-item.row {
+    margin-left: 0;
+    margin-right: 0;
 }
 .list-item>div{
    display:inline-block;
 }
 .item-state{
-    width: 5%;
     text-align: center;
 }
 .item-content{
-    width: 70%;
     font-family: 楷体;
 }
 .item-time{
-    width: 15%;
     font-size: 13px;
     color: #328ad6;
     text-align: right;
 }
 .item-action{
-    width: 8%;
     text-align: center;
 }
 .action-delete{
