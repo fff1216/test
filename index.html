@@ -55,7 +55,7 @@
                         <li>
                             <div class="list-item z-depth-3 row">
                                 <div class="item-state col m1">
-                                    <input type="checkbox" id="1" class="choose"/>
+                                    <input type="checkbox" id="1" class="choose" />
                                     <label for="1"></label>
                                     <!-- <input type="checkbox" /> -->
                                 </div>
@@ -74,12 +74,27 @@
                 <div id="done-list">
                     <div id="ending">
                         <span class="showlist z-depth-2" value="1">隐藏已完成任务</span>
+                        <a class="modal-trigger showgraph z-depth-2" href="#modal1">查看任务完成率</a>
+                        <div id="modal1" class="modal modal-fixed-footer">
+                            <div class="modal-content">
+                                <h6>任务完成率饼状图</h6>
+                                <p>
+                                    <canvas class="z-depth-4" id="canvas_circle" width="500" height="290"
+                                        style="border:3px solid #bbdefb;">
+                                        浏览器不支持canvas
+                                    </canvas>
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">关闭</a>
+                            </div>
+                        </div>
                     </div>
                     <ul id="complete">
                         <li>
                             <div class="list-item z-depth-3 row">
                                 <div class="item-state col m1">
-                                    <input type="checkbox" id="test7" checked="checked" class="choose"  />
+                                    <input type="checkbox" id="test7" checked="checked" class="choose" />
                                     <label for="test7"></label>
                                     <!-- <input type="checkbox" checked /> -->
                                 </div>
@@ -113,10 +128,11 @@
                     </ul>
                 </div>
             </div>
-            
+
         </section>
 
     </div>
     <script src="https://www.imooc.com/static/lib/jquery/1.9.1/jquery.js"></script>
     <script src="js/test.js"></script>
+    <script src="js/materialize.js"></script>
 </body>

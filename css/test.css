@@ -103,6 +103,15 @@ input[type=text] {
     border-radius: 4px;
     cursor: pointer;
 }
+.showgraph{
+    background-color: #2299c9;
+    color: whitesmoke;
+    font-size: 14px;
+    padding: 3px 16px;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
 #done-list ul{
     list-style: none;
     margin-bottom: 30px;
