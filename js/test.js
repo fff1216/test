@@ -34,8 +34,7 @@ $(function () {
         }
     });
 
-    $(".modal").modal();
-    // window.onload = init;  
+    $('.modal').modal();
 });
 
 var render = function () {
@@ -68,7 +67,7 @@ var render = function () {
             dolist.append(newtask);
         }
     }
-    init();
+    showGraph();
 
 };
 var addtask = function (value) {
@@ -164,44 +163,9 @@ var getMoment = function () {
     return currentM;
 };
 
-var drawCircle = function (canvasId, data_arr, color_arr, text_arr) {
-    var c = document.getElementById(canvasId);
-    var ctx = c.getContext("2d");
+var showGraph=function() {
+    var myChart = echarts.init(document.getElementById('main'));
 
-    var radius = c.height / 2 - 20; //半径  
-    var ox = radius + 20, oy = radius + 20; //圆心  
-
-    var width = 30, height = 10; //图例宽和高  
-    var posX = ox * 2 + 20, posY = 30;   //  
-    var textX = posX + width + 5, textY = posY + 10;
-
-    var startAngle = 0; //起始弧度  
-    var endAngle = 0;   //结束弧度  
-    for (var i = 0; i < data_arr.length; i++) {
-        //绘制饼图  
-        endAngle = endAngle + data_arr[i] * Math.PI * 2; //结束弧度  
-        ctx.fillStyle = color_arr[i];
-        ctx.beginPath();
-        ctx.moveTo(ox, oy); //移动到到圆心  
-        ctx.arc(ox, oy, radius, startAngle, endAngle, false);
-        ctx.closePath();
-        ctx.fill();
-        startAngle = endAngle; //设置起始弧度  
-
-        //绘制比例图及文字  
-        ctx.fillStyle = color_arr[i];
-        ctx.fillRect(posX, posY + 20 * i, width, height);
-        ctx.moveTo(posX, posY + 20 * i);
-        ctx.font = 'bold 12px 微软雅黑';    //斜体 30像素 微软雅黑字体  
-        ctx.fillStyle = color_arr[i];   
-        var percent = text_arr[i] + "：" + 100 * data_arr[i] + "%";
-        ctx.fillText(percent, textX, textY + 20 * i);
-    }
-}
-
-var init=function() {
-    //绘制饼图  
-    //比例数据和颜色  
     var storage = window.localStorage;
     var tasks = storage.getItem("taskList");
     var taskList = JSON.parse(tasks);
@@ -216,9 +180,68 @@ var init=function() {
         }
     }
     var add=incompete_task+compete_task;
-    var data_arr = [incompete_task/add,compete_task/add];
-    var color_arr = ["#81d4fa", "#9575cd"];
-    var text_arr = ["未完成任务", "已完成任务"];
+    option = {
+        backgroundColor: '#2c343c',
+    
+        title: {
+            text: '任务完成率饼状图',
+            left: 'center',
+            top: 20,
+            textStyle: {
+                color: '#ccc'
+            }
+        },
+    
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
+        },
+    
+        visualMap: {
+            show: false,
+            min: 0,
+            max: 8,
+            inRange: {
+                colorLightness: [0, 1]
+            }
+        },
+        series: [
+            {
+                name: '访问来源',
+                type: 'pie',
+                radius: '55%',
+                center: ['50%', '50%'],
+                data: [
+                    {value: compete_task, name: '已完成任务'},
+                    {value: incompete_task, name: '未完成任务'},
+                ].sort(function (a, b) { return a.value - b.value; }),
+                roseType: 'radius',
+                label: {
+                    color: 'rgba(255, 255, 255, 0.3)'
+                },
+                labelLine: {
+                    lineStyle: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                    },
+                    smooth: 0.2,
+                    length: 10,
+                    length2: 20
+                },
+                itemStyle: {
+                    color: '#c23531',
+                    shadowBlur: 200,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                },
+    
+                animationType: 'scale',
+                animationEasing: 'elasticOut',
+                animationDelay: function (idx) {
+                    return Math.random() * 200;
+                }
+            }
+        ]
+    };
 
-    drawCircle("canvas_circle", data_arr, color_arr, text_arr);
-}
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+};
